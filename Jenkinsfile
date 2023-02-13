@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("Create Images"){
             steps{
-                echo "========executing A========"
+                echo "===x=====executing A========"
                 sh "pwd"
             }
         }
