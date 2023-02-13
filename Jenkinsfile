@@ -8,7 +8,7 @@ pipeline{
                 sh "pwd"
                 sh "cd app/adservice/"
                 //sh "docker build ."
-                sh "docker build . -t adservicejenkins -f /var/jenkins_home/workspace/TeamSCC-project@2/app/adservice/Dockerfile"
+                sh "docker build . -t"
             }
         }
         stage("Push Image to Dockerhub"){

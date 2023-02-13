@@ -50,3 +50,7 @@ pipeline {
         }
     }
 }
+
+
+
+adservicejenkins -f /var/jenkins_home/workspace/TeamSCC-project@2/app/adservice/Dockerfile
