@@ -2,6 +2,11 @@ pipeline{
     agent any
     stages{
         stage("Create Images"){
+            agent {
+                docker {
+                    reuseNode true
+                }
+            }            
             steps{
                 echo "===x=====executing A========"
                 sh "pwd"
