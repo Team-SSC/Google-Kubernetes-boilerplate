@@ -4,7 +4,7 @@ pipeline{
         stage("Create Images"){
             steps{
                 echo "========executing A========"
-                pwd
+                sh "pwd"
             }
         }
         stage("Push Image to Dockerhub"){
