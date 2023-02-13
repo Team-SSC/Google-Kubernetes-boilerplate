@@ -5,7 +5,7 @@ pipeline{
             steps{
                 echo "===x=====executing A========"
                 sh "pwd"
-                sh "docker build -f ~/app/adservice"
+                sh "docker build -f ~/app/adservice/Dockerfile"
             }
         }
         stage("Push Image to Dockerhub"){
