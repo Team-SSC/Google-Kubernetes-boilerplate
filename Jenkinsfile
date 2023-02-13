@@ -2,8 +2,7 @@ pipeline{
     agent any
     stages{
         stage("Create Images"){
-            agent { dockerfile true }
-            }            
+            agent { dockerfile true }      
             steps{
                 echo "===x=====executing A========"
                 sh "pwd"
@@ -22,4 +21,5 @@ pipeline{
             }
         }
     }
+}
     
