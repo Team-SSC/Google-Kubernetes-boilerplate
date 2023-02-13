@@ -8,7 +8,7 @@ pipeline{
                 sh "pwd"
                 sh "cd app/adservice/"
                 //sh "docker build ."
-                sh "docker build . -t"
+                sh "docker build . -t testapp"
             }
         }
         stage("Push Image to Dockerhub"){
