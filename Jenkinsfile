@@ -6,7 +6,7 @@ pipeline{
             steps{
                 echo "===x=====executing A========"
                 sh "pwd"
-                sh "cd app/adservice/"
+                //sh "cd app/adservice/"
                 //sh "docker build ."
                 sh "docker build . -t testapp"
             }
