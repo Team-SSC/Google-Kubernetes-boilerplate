@@ -1,32 +1,22 @@
 pipeline{
     agent any
     stages{
-        stage("A"){
+        stage("Create Images"){
+            steps{
+                echo "========executing A========"
+                pwd
+            }
+        }
+        stage("Push Image to Dockerhub"){
             steps{
                 echo "========executing A========"
             }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
+        }
+        stage(""){
+            steps{
+                echo "========executing A========"
             }
         }
     }
-    post{
-        always{
-            echo "========always========"
-        }
-        success{
-            echo "========pipeline executed successfully ========"
-        }
-        failure{
-            echo "========pipeline execution failed========"
-        }
-    }
+    
 }
