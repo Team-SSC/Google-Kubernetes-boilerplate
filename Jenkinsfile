@@ -2,8 +2,22 @@ pipeline{
     agent any
     stages{
         stage("Copy files to Docker Server"){
+            withCredentials([sshUserPrivateKey(credentialsId: 'sshCredentials', keyFileVariable: 'shyneubuntuserver', passphraseVariable: 'password', usernameVariable: 'username')]) {
+    // some block
+}
             //agent { dockerfile true }      
             steps{
+                script{
+                    withCredentials([sshUserPrivateKey(credentialsId: 'sshCredentials', keyFileVariable: 'shyneubuntuserver', passphraseVariable: 'password', usernameVariable: 'username')]) {
+                        echo "===x=====executing A========"
+                        sh "pwd"
+                        sh "scp -i ${password} classproject/Google-Kubernetes-boilerplate/app/adservice/* ubuntu@35.183.109.118:~/"
+                        sh "scp -i ${password} dockerinstallscript.sh ubuntu@35.183.109.118:~/"
+                        //sh "cd app/adservice/"
+                        //sh "docker build ."
+                        //sh "docker build . -t testapp"                  
+                    }
+                }
                 echo "===x=====executing A========"
                 sh "pwd"
                 sh "scp classproject/Google-Kubernetes-boilerplate/app/adservice/* ubuntu@35.183.109.118:~/"
