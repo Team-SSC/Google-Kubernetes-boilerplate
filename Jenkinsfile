@@ -5,8 +5,8 @@ pipeline {
         stage('Hello') {
             steps {
                 sh '''cd app/shippingservice/
-                       docker build . -t tsp/shippingservice
-                       docker push tsp/shippingservice
+                       docker build . -t shynedevs/shippingservice
+                       docker push shynedevs/shippingservice
                        '''
             }
         }
