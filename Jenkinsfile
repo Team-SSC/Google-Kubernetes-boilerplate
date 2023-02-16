@@ -1,25 +1,16 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage("Copy files to Docker Server"){ 
-            steps{
-                script{
-                    sshagent(['sshCredentials']) {
-                        sh 'pwd'
-                        sh 'ls'
-                        sh 'df -h'
-                        sh 'ssh -t -o StrictHostKeyChecking=no ubuntu@35.183.109.118'
-                        sh 'scp -r /var/jenkins_home/workspace/TeamSCC-project ubuntu@35.183.109.118:~/'               
-                        sh 'touch testfile.txt'
-                        sh 'chmod 777 TeamSCC-project/dockerinstallscript.sh'
-                        sh 'sh TeamSCC-project/dockerinstallscript.sh'
-                        sh 'docker build -t adserviceshyne'
-                        
-                    }    
-                }
+
+    stages {
+        stage('Hello') {
+            steps {
+                git branch: 'serahbranch', credentialsId: 'd8398470-2dc7-4a8e-9001-df92ba6bd73b', url: 'https://github.com/Team-SSC/Google-Kubernetes-boilerplate.git'
+                sh '''cd app/shippingservice/
+                       docker build . -t tolaoguntunde/shippingservice
+                       docker push tolaoguntunde/shippingservice
+                       '''
             }
         }
+        }
+                
     }
-}
-
-    
