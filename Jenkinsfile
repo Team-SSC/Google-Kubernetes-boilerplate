@@ -5,9 +5,12 @@ pipeline {
         stage('Hello') {
             steps {
                 sh '''cd app/shippingservice/
-                       docker build . -t shynedevs/shippingservice
-                       docker push shynedevs/shippingservice
+                       docker build . -t shynedevs/shippingservice                       
                        '''
+                withCredentials([usernamePassword(credentialsId: 'DockerHubCredentials', passwordVariable: 'password', usernameVariable: 'username')]) {
+                    sh 'docker login -u ${username} -p ${password} shynedevs'
+                    sh 'docker push shynedevs/shippingservice'
+                }
             }
         }
         }
