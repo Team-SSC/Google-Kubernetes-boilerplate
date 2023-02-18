@@ -3,9 +3,8 @@ pipeline {
     environment {
         dockerhub=credentials('DockerHubCredentials')
     }
-
     stages {
-        stage('Hello') {
+        stage('Build all Docker Images and Push to DockerHub') {
             steps {
                 sh ''' #cd $WORKSPACE/app/checkoutservice/
                        docker build -t shynedevs/adservice $WORKSPACE/app/adservice/
@@ -19,10 +18,8 @@ pipeline {
                        docker build -t shynedevs/checkoutservice:3 $WORKSPACE/app/checkoutservice/
                        echo $dockerhub_PSW | docker login -u $dockerhub_USR --password-stdin
                        docker push shynedevs/checkoutservice:3
-                       '''
-               
+                       '''              
             }
         }
-        }
-                
-    }
+    }             
+}
